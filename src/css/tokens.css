@@ -1,0 +1,33 @@
+/* The only file in the project allowed to contain colour literals.
+   SAMPLED PALETTE. Source: brand/ logos and the six reference slides, notes region of the cover for the paper pair.
+   Method: k-means (k-means++ seed 7) over 5-bit colour bins weighted by sqrt(count); each centroid was then snapped to
+   the real pixel nearest to it, so every literal below is an exact pixel from a real file, coordinate given.
+   Regenerate with: node scripts/sample-palette.mjs. Verified by a gate that re-reads each pixel. */
+:root {
+  color-scheme: dark;
+
+  /* sampled: reference/JOBR 1.jpg.jpeg @ 88,0 */
+  --bg: #0b1508;
+  /* sampled: reference/JOBR 1.jpg.jpeg @ 745,291 */
+  --accent: #b3ea3b;
+  /* sampled: brand/LOGO JOBR PNG...png @ 816,708 */
+  --ink: #edf0e7;
+  /* sampled: brand/LOGO JOBR PNG.png @ 983,1350 */
+  --moss: #84a433;
+  /* sampled: reference/SAMPUL JOBR JPG.jpg.jpeg @ 1320,66 */
+  --paper: #d5cbb3;
+  /* sampled: reference/SAMPUL JOBR JPG.jpg.jpeg @ 1334,61 */
+  --paper-ink: #0b1311;
+  /* sampled: reference/SAMPUL JOBR JPG.jpg.jpeg @ 1399,224 */
+  --stamp: #235981;
+
+  /* derived by mixing the sampled values, no new literals */
+  --accent-ink: var(--bg);
+  --surface: color-mix(in srgb, var(--bg) 94%, var(--ink));
+  --surface-2: color-mix(in srgb, var(--bg) 89%, var(--ink));
+  --surface-3: color-mix(in srgb, var(--bg) 83%, var(--ink));
+  --ink-2: color-mix(in srgb, var(--ink) 78%, var(--bg));
+  --muted: color-mix(in srgb, var(--ink) 56%, var(--bg));
+  --dim: color-mix(in srgb, var(--ink) 36%, var(--bg));
+  --mask: var(--ink);
+}
